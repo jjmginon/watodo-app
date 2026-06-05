@@ -1,0 +1,93 @@
+// ============================================
+// UTILS — WaTodo Shared Utility Classes
+// ============================================
+
+@use "base" as *;
+
+// --------------------------------------------
+// Screen Reader Only
+// --------------------------------------------
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --------------------------------------------
+// Shared Button Base
+// --------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  padding: $space-sm $space-md;
+  border: 2px solid transparent;
+  border-radius: $radius-md;
+  outline: none;
+  font-size: $font-size-md;
+  font-weight: 700;
+  transition:
+    background-color $duration-base $easing-default,
+    box-shadow $duration-base $easing-default,
+    transform $duration-fast $easing-bounce,
+    filter $duration-base $easing-default;
+
+  &:focus-visible {
+    outline: 3px solid $color-border-focus;
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  // -- Add button variant
+  &--add {
+    flex-shrink: 0;
+    width: 52px;
+    border-color: $color-btn-add;
+    border-radius: $radius-md;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #fff;
+    background-color: $color-btn-add;
+
+    &:hover,
+    &:focus-visible {
+      border-color: $color-btn-add-hover;
+      background-color: $color-btn-add-hover;
+      box-shadow: 0 4px 16px rgba(232, 99, 10, 0.35);
+      transform: scale(1.06);
+    }
+  }
+
+  // -- Clear button variant
+  &--clear {
+    min-height: 36px;
+    padding: $space-xs $space-md;
+    border-color: $color-btn-clear-border;
+    border-radius: $radius-pill;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-btn-clear-text;
+    background-color: $color-btn-clear;
+
+    &:hover,
+    &:focus-visible {
+      border-color: $color-btn-clear-border-hover;
+      background-color: #ede5dc;
+      box-shadow: 0 2px 8px rgba(122, 58, 30, 0.18);
+    }
+  }
+}

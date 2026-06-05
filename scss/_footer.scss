@@ -1,0 +1,38 @@
+// ============================================
+// FOOTER — WaTodo Footer Section
+// ============================================
+
+@use "base" as *;
+
+.footer {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+
+  &__text {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $color-text-muted;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-btn-add;
+    text-decoration: none;
+    transition: color $duration-base $easing-default;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-btn-add-hover;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &:focus-visible {
+      border-radius: $radius-sm;
+      outline: 3px solid $color-border-focus;
+      outline-offset: 3px;
+    }
+  }
+}

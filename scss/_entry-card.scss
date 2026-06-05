@@ -1,0 +1,72 @@
+// ============================================
+// ENTRY CARD — WaTodo New Item Input Form
+// ============================================
+
+@use "base" as *;
+
+.entry-card {
+  padding: $space-lg;
+  border-radius: $radius-lg;
+  background-color: $color-surface;
+  box-shadow:
+    0 2px 8px $color-shadow,
+    0 0 0 1px $color-border;
+
+  // --------------------------------------------
+  // Visible label above the input
+  // --------------------------------------------
+  &__label {
+    display: block;
+    margin-bottom: $space-sm;
+    font-size: $font-size-sm;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-text-secondary;
+  }
+
+  // --------------------------------------------
+  // Input row: text field + add button
+  // --------------------------------------------
+  &__input-row {
+    display: flex;
+    align-items: stretch;
+    gap: $space-sm;
+  }
+
+  // --------------------------------------------
+  // Text input
+  // --------------------------------------------
+  &__input {
+    flex: 1;
+    min-height: 52px;
+    padding: $space-sm $space-md;
+    border: 2px solid $color-border;
+    border-radius: $radius-md;
+    outline: none;
+    background-color: $color-bg;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-text-primary;
+    transition:
+      border-color $duration-base $easing-default,
+      box-shadow $duration-base $easing-default,
+      background-color $duration-base $easing-default;
+
+    &::placeholder {
+      font-weight: 400;
+      color: $color-text-muted;
+    }
+
+    &:hover {
+      border-color: $color-border-hover;
+      background-color: $color-surface;
+    }
+
+    &:focus {
+      border-color: $color-border-focus;
+      background-color: $color-surface;
+      box-shadow: 0 0 0 4px rgba(232, 99, 10, 0.14);
+    }
+  }
+}

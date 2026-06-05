@@ -1,0 +1,124 @@
+// ============================================
+// MODAL — WaTodo Clear List Confirmation
+// ============================================
+
+@use "base" as *;
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: $space-md;
+
+  &.is-open {
+    display: flex;
+  }
+
+  // --------------------------------------------
+  // Backdrop
+  // --------------------------------------------
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(28, 26, 23, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  // --------------------------------------------
+  // Dialog panel
+  // --------------------------------------------
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    padding: $space-xl;
+    border-radius: $radius-lg;
+    background-color: $color-surface;
+    box-shadow:
+      0 8px 32px $color-shadow-deep,
+      0 0 0 1px $color-border;
+    animation: modalFadeIn $duration-slow $easing-bounce both;
+  }
+
+  // --------------------------------------------
+  // Title
+  // --------------------------------------------
+  &__title {
+    margin-bottom: $space-sm;
+    font-family: $font-brand;
+    font-size: $font-size-xl;
+    font-weight: 400;
+    color: $color-text-primary;
+  }
+
+  // --------------------------------------------
+  // Description
+  // --------------------------------------------
+  &__desc {
+    margin-bottom: $space-lg;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    line-height: 1.6;
+    color: $color-text-secondary;
+  }
+
+  // --------------------------------------------
+  // Action buttons row
+  // --------------------------------------------
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-sm;
+  }
+}
+
+// --------------------------------------------
+// Modal-specific button variants
+// --------------------------------------------
+.btn--modal-cancel {
+  min-height: 44px;
+  padding: $space-xs $space-md;
+  border-color: $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  background-color: $color-btn-clear;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-border-hover;
+    background-color: $color-surface-hover;
+    box-shadow: 0 2px 8px $color-shadow;
+  }
+}
+
+.btn--modal-confirm {
+  min-height: 44px;
+  padding: $space-xs $space-md;
+  border-color: #b91c1c;
+  border-radius: $radius-md;
+  color: #fff;
+  background-color: #b91c1c;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #991b1b;
+    background-color: #991b1b;
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.35);
+  }
+}

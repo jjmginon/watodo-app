@@ -1,0 +1,212 @@
+// ============================================
+// LIST CARD — WaTodo To-Do Items Display
+// ============================================
+
+@use "base" as *;
+
+// --------------------------------------------
+// Item entrance animation
+// --------------------------------------------
+@keyframes itemSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes itemCheckOff {
+  0% {
+    background-color: $color-surface;
+  }
+  40% {
+    background-color: $color-item-done;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+.list-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: $space-lg;
+  border-radius: $radius-lg;
+  background-color: $color-surface;
+  box-shadow:
+    0 2px 8px $color-shadow,
+    0 0 0 1px $color-border;
+
+  // --------------------------------------------
+  // Header row: title + clear button
+  // --------------------------------------------
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-sm;
+  }
+
+  &__title {
+    font-family: $font-brand;
+    font-size: $font-size-xl;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: $color-text-primary;
+  }
+
+  // --------------------------------------------
+  // Divider
+  // --------------------------------------------
+  &__divider {
+    margin-bottom: $space-sm;
+    border: none;
+    border-top: 2px solid $color-border;
+  }
+
+  // --------------------------------------------
+  // Items list
+  // --------------------------------------------
+  &__items {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  // --------------------------------------------
+  // Empty state
+  // --------------------------------------------
+  &__empty {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+    padding: $space-xl 0;
+    font-size: $font-size-md;
+    font-weight: 600;
+    text-align: center;
+    color: $color-text-muted;
+
+    &.is-visible {
+      display: flex;
+    }
+  }
+
+  &__empty-icon {
+    font-size: 2rem;
+    color: $color-check-accent;
+    opacity: 0.6;
+  }
+}
+
+// ============================================
+// LIST ITEM — Individual To-Do Entry
+// ============================================
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  padding: $space-sm $space-sm;
+  border-radius: $radius-md;
+  border: 2px solid transparent;
+  background-color: $color-surface;
+  transition:
+    border-color $duration-base $easing-default,
+    background-color $duration-base $easing-default;
+  animation: itemSlideIn $duration-slow $easing-bounce both;
+
+  &:hover {
+    border-color: $color-border;
+    background-color: $color-surface-hover;
+  }
+
+  // Checked-off state (class added by JS before removal)
+  &.is-checking-off {
+    pointer-events: none;
+    animation: itemCheckOff 400ms $easing-default forwards;
+  }
+
+  // --------------------------------------------
+  // Custom checkbox
+  // --------------------------------------------
+  &__checkbox {
+    position: relative;
+    flex-shrink: 0;
+    width: 26px;
+    min-width: 26px;
+    height: 26px;
+    border: 2.5px solid $color-border;
+    border-radius: 50%;
+    outline: none;
+    background-color: $color-surface;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition:
+      border-color $duration-base $easing-default,
+      background-color $duration-base $easing-default,
+      box-shadow $duration-base $easing-default;
+
+    &::after {
+      content: "✓";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: #fff;
+      opacity: 0;
+      transition: opacity $duration-fast $easing-default;
+    }
+
+    &:hover {
+      border-color: $color-check-accent;
+      box-shadow: 0 0 0 4px rgba(42, 122, 75, 0.15);
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-border-focus;
+      outline-offset: 3px;
+    }
+
+    &:checked {
+      border-color: $color-check-accent;
+      background-color: $color-check-accent;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Focus ring on label when checkbox is focused
+  &__checkbox:focus-visible + &__label {
+    text-decoration: underline;
+    text-decoration-color: $color-border-focus;
+    text-underline-offset: 3px;
+  }
+
+  // --------------------------------------------
+  // Item label
+  // --------------------------------------------
+  &__label {
+    flex: 1;
+    font-size: $font-size-md;
+    font-weight: 600;
+    line-height: 1.4;
+    color: $color-text-primary;
+    cursor: pointer;
+    transition: color $duration-base $easing-default;
+  }
+}

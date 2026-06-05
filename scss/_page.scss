@@ -1,0 +1,27 @@
+// ============================================
+// PAGE — WaTodo Layout Shell
+// ============================================
+
+@use "base" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+  min-height: 100dvh;
+  padding: $space-xl $space-md;
+
+  @include mq(600px) {
+    padding: $space-2xl $space-xl;
+  }
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-lg;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}

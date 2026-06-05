@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="JJ Ginon">
+    <meta name="description" content="WaTodo — Know What To Do Next. A simple, friendly to-do list.">
+    <title>WaTodo — Know What To Do Next</title>
+    <link rel="stylesheet" href="dist/css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Righteous&display=swap"
+        rel="stylesheet">
+    <script src="js/main.js" type="module"></script>
+</head>
+
+<body>
+    <div class="page">
+
+        <header class="header" role="banner">
+            <div class="header__wordmark" aria-hidden="true">
+                <span class="header__letter header__letter--w">W</span><span
+                    class="header__letter header__letter--a">a</span><span
+                    class="header__letter header__letter--t">T</span><span
+                    class="header__letter header__letter--o1">o</span><span
+                    class="header__letter header__letter--d">d</span><span
+                    class="header__letter header__letter--o2">o</span>
+            </div>
+            <p class="header__tagline">Know what to do next.</p>
+        </header>
+
+        <main class="main" id="main-content">
+            <h1 class="sr-only">WaTodo — Know What To Do Next</h1>
+
+            <section class="entry-card" aria-labelledby="entry-heading">
+                <h2 id="entry-heading" class="sr-only">Add a new to-do item</h2>
+                <form id="itemEntryForm" class="entry-card__form" novalidate>
+                    <label for="newItem" class="entry-card__label">What do you need to do?</label>
+                    <div class="entry-card__input-row">
+                        <input id="newItem" class="entry-card__input" type="text" autocomplete="off"
+                            placeholder="e.g. Buy groceries, Call the doctor…" aria-describedby="entry-hint"
+                            tabindex="0">
+                        <button id="addItem" class="btn btn--add" type="submit" aria-label="Add item to list">
+                            <span aria-hidden="true">+</span>
+                        </button>
+                    </div>
+                    <p id="entry-hint" class="sr-only">Type a task and press Enter or click the + button to add it.</p>
+                </form>
+            </section>
+
+            <section class="list-card" aria-labelledby="list-heading">
+                <div class="list-card__header">
+                    <h2 id="list-heading" class="list-card__title">My List</h2>
+                    <button id="clearItems" class="btn btn--clear" type="button"
+                        aria-label="Remove all items from the list">
+                        Clear all
+                    </button>
+                </div>
+                <hr class="list-card__divider" role="presentation">
+                <ul id="listItems" class="list-card__items" aria-label="To-do items" aria-live="polite">
+                </ul>
+                <p id="emptyState" class="list-card__empty" aria-hidden="true">
+                    <span class="list-card__empty-icon" aria-hidden="true">✓</span>
+                    You're all caught up!
+                </p>
+            </section>
+        </main>
+
+        <footer class="footer" role="contentinfo">
+            <p class="footer__text">A simple, no-fuss to-do list that remembers your tasks between visits.</p>
+        </footer>
+
+    </div>
+
+    <!-- Clear list confirmation modal -->
+    <div id="clearModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+        aria-describedby="modal-desc" inert>
+        <div class="modal__backdrop"></div>
+        <div class="modal__dialog">
+            <h2 id="modal-title" class="modal__title">Clear all items?</h2>
+            <p id="modal-desc" class="modal__desc">This will permanently remove every item from your list. This action
+                cannot be undone.</p>
+            <div class="modal__actions">
+                <button id="modalCancel" class="btn btn--modal-cancel" type="button">Cancel</button>
+                <button id="modalConfirm" class="btn btn--modal-confirm" type="button">Yes, clear all</button>
+            </div>
+        </div>
+    </div>
+
+    <p id="confirmation" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
+</body>
+
+</html>
