@@ -1,6 +1,4 @@
-// ============================================
-// HEADER — WaTodo Wordmark & Tagline
-// ============================================
+/* || HEADER STYLES */
 
 @use "base" as *;
 
@@ -10,9 +8,7 @@
   margin: 0 auto;
   text-align: center;
 
-  // --------------------------------------------
   // Wordmark
-  // --------------------------------------------
   &__wordmark {
     user-select: none;
     font-family: $font-brand;
@@ -49,9 +45,7 @@
     }
   }
 
-  // --------------------------------------------
   // Tagline
-  // --------------------------------------------
   &__tagline {
     margin-top: $space-xs;
     font-size: $font-size-lg;

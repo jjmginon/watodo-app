@@ -1,6 +1,4 @@
-// ============================================
-// ENTRY CARD — WaTodo New Item Input Form
-// ============================================
+/* || ENTRY CARD STYLES */
 
 @use "base" as *;
 
@@ -12,9 +10,7 @@
     0 2px 8px $color-shadow,
     0 0 0 1px $color-border;
 
-  // --------------------------------------------
   // Visible label above the input
-  // --------------------------------------------
   &__label {
     display: block;
     margin-bottom: $space-sm;
@@ -25,18 +21,14 @@
     color: $color-text-secondary;
   }
 
-  // --------------------------------------------
   // Input row: text field + add button
-  // --------------------------------------------
   &__input-row {
     display: flex;
     align-items: stretch;
     gap: $space-sm;
   }
 
-  // --------------------------------------------
   // Text input
-  // --------------------------------------------
   &__input {
     flex: 1;
     min-height: 52px;

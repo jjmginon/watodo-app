@@ -1,12 +1,9 @@
-// ============================================
-// UTILS — WaTodo Shared Utility Classes
-// ============================================
+/* || UTILIY CLASSES */
 
 @use "base" as *;
 
-// --------------------------------------------
-// Screen Reader Only
-// --------------------------------------------
+/* SCREEN READER ONLY */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -20,9 +17,8 @@
   border: 0;
 }
 
-// --------------------------------------------
-// Shared Button Base
-// --------------------------------------------
+/* SHARED BUTTON BASE STYLES */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -50,7 +46,7 @@
     transform: scale(0.95);
   }
 
-  // -- Add button variant
+  // Add button variant
   &--add {
     flex-shrink: 0;
     width: 52px;
@@ -70,7 +66,7 @@
     }
   }
 
-  // -- Clear button variant
+  // Clear button variant
   &--clear {
     min-height: 36px;
     padding: $space-xs $space-md;

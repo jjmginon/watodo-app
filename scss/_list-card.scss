@@ -1,12 +1,9 @@
-// ============================================
-// LIST CARD — WaTodo To-Do Items Display
-// ============================================
+/* || LIST CARD STYLES */
 
 @use "base" as *;
 
-// --------------------------------------------
-// Item entrance animation
-// --------------------------------------------
+/* ANIMATIONS */
+
 @keyframes itemSlideIn {
   from {
     opacity: 0;
@@ -31,6 +28,8 @@
   }
 }
 
+/* LIST CARD */
+
 .list-card {
   display: flex;
   flex-direction: column;
@@ -42,9 +41,7 @@
     0 2px 8px $color-shadow,
     0 0 0 1px $color-border;
 
-  // --------------------------------------------
   // Header row: title + clear button
-  // --------------------------------------------
   &__header {
     display: flex;
     align-items: center;
@@ -60,18 +57,14 @@
     color: $color-text-primary;
   }
 
-  // --------------------------------------------
   // Divider
-  // --------------------------------------------
   &__divider {
     margin-bottom: $space-sm;
     border: none;
     border-top: 2px solid $color-border;
   }
 
-  // --------------------------------------------
   // Items list
-  // --------------------------------------------
   &__items {
     display: flex;
     flex: 1;
@@ -79,9 +72,7 @@
     gap: $space-xs;
   }
 
-  // --------------------------------------------
   // Empty state
-  // --------------------------------------------
   &__empty {
     display: none;
     flex: 1;
@@ -107,9 +98,7 @@
   }
 }
 
-// ============================================
-// LIST ITEM — Individual To-Do Entry
-// ============================================
+/* LIST ITEM */
 
 .list-item {
   display: flex;
@@ -135,9 +124,7 @@
     animation: itemCheckOff 400ms $easing-default forwards;
   }
 
-  // --------------------------------------------
   // Custom checkbox
-  // --------------------------------------------
   &__checkbox {
     position: relative;
     flex-shrink: 0;
@@ -197,9 +184,7 @@
     text-underline-offset: 3px;
   }
 
-  // --------------------------------------------
   // Item label
-  // --------------------------------------------
   &__label {
     flex: 1;
     font-size: $font-size-md;
