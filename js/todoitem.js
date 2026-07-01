@@ -1,3 +1,5 @@
+// --- TODO ITEM MODULE --- //
+
 export default class ToDoItem {
     constructor() {
         this._id = null;

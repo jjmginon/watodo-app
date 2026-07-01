@@ -1,11 +1,12 @@
+// --- MAIN JS ENTRY POINT --- //
+
 import ToDoList from "./ToDoList.js";
 import ToDoItem from "./ToDoItem.js";
 
 const toDoList = new ToDoList();
 
-// ============================================
-// App Init
-// ============================================
+/* App Init */
+
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         initApp();
@@ -46,9 +47,8 @@ const initApp = () => {
     refreshThePage();
 };
 
-// ============================================
-// Persistence
-// ============================================
+/* Persistence */
+
 const loadListObject = () => {
     const storedList = localStorage.getItem("myToDoList");
     if (typeof storedList !== "string") return;
@@ -63,9 +63,8 @@ const updatePersistentData = (listArray) => {
     localStorage.setItem("myToDoList", JSON.stringify(listArray));
 };
 
-// ============================================
-// Render
-// ============================================
+/* Render */
+
 const refreshThePage = () => {
     clearListDisplay();
     renderList();
@@ -141,9 +140,8 @@ const getLabelText = (checkboxId) => {
     return document.getElementById(checkboxId).nextElementSibling.textContent;
 };
 
-// ============================================
-// Empty State
-// ============================================
+/* Empty State */
+
 const updateEmptyState = () => {
     const emptyState = document.getElementById("emptyState");
     const list = toDoList.getList();
@@ -156,9 +154,9 @@ const updateEmptyState = () => {
     }
 };
 
-// ============================================
-// Form Helpers
-// ============================================
+
+/* Form Helpers */
+
 const clearItemEntryField = () => {
     document.getElementById("newItem").value = "";
 };
@@ -198,9 +196,8 @@ const createNewItem = (itemId, itemText) => {
     return toDo;
 };
 
-// ============================================
-// Clear Modal
-// ============================================
+/* Clear Modal */
+
 const openClearModal = () => {
     const modal = document.getElementById("clearModal");
     const page = document.querySelector(".page");
@@ -221,9 +218,8 @@ const closeClearModal = () => {
     document.getElementById("clearItems").focus();
 };
 
-// ============================================
-// Screen Reader Confirmation
-// ============================================
+/* Screen Reader Confirmation */
+
 const updateScreenReaderConfirmation = (newEntryText, actionVerb) => {
     const item = newEntryText.length > 15 ? "item" : newEntryText;
     document.getElementById("confirmation").textContent = `${item} ${actionVerb}.`;
