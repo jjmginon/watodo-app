@@ -22,6 +22,8 @@ WaTodo/
 │
 ├── index.html              # Main app shell
 │
+├── favicon/                # Favicon and PWA assets
+│
 ├── scss/                   # Source SCSS partials
 │   ├── _base.scss          # Design tokens & reset
 │   ├── _utils.scss         # Utility classes (buttons, sr-only)
@@ -33,14 +35,15 @@ WaTodo/
 │   ├── _footer.scss        # Footer section
 │   └── style.scss          # Main SCSS entrypoint
 │
-├── dist/css/
-│   ├── style.min.css       # Compiled & minified CSS
-│   └── style.min.css.map   # Source map
+├── dist/
+│   └── css/
+│       ├── style.min.css       # Compiled & minified CSS
+│       └── style.min.css.map   # Source map
 │
-├── js/
-│   ├── main.js             # App logic, rendering, persistence
-│   ├── ToDoItem.js         # Task model class
-│   └── ToDoList.js         # List manager class
+└── js/
+    ├── main.js             # App logic, rendering, persistence
+    ├── ToDoItem.js         # Task model class
+    └── ToDoList.js         # List manager class
 ```
 
 ---
