@@ -1,5 +1,7 @@
 # WaTodo ✅📝
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/81f8dbc5-cc62-4def-afef-24dc3fdf2420/deploy-status)](https://app.netlify.com/projects/watodo-app/deploys)
+
 WaTodo is a simple, friendly to‑do list application built in 2026 with a modern design system, accessibility‑first structure, and performance‑optimized styling. Designed to be lightweight yet reliable, it remembers your tasks between visits and helps you stay focused on what to do next.
 
 ---
@@ -18,7 +20,7 @@ This app demonstrates how a straightforward concept can be elevated into a polis
 ## 📂 File Structure
 
 ```
-WaTodo/
+watodo-app/
 │
 ├── index.html              # Main app shell
 │
