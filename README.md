@@ -4,6 +4,8 @@
 
 WaTodo is a simple, friendly to‑do list application built in 2026 with a modern design system, accessibility‑first structure, and performance‑optimized styling. Designed to be lightweight yet reliable, it remembers your tasks between visits and helps you stay focused on what to do next.
 
+**Live Demo:** [watodo-app.netlify.app](https://watodo-app.netlify.app/)
+
 ---
 
 ## 🌐 Project Overview
@@ -70,11 +72,11 @@ watodo-app/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/WaTodo.git
+   git clone https://github.com/jjmginon/watodo-app.git
    ```
 2. Navigate into the project folder:
    ```bash
-   cd WaTodo
+   cd watodo-app
    ```
 3. Open `index.html` in your browser to use the app.
 
