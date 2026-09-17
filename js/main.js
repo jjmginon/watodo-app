@@ -7,12 +7,6 @@ const toDoList = new ToDoList();
 
 /* App Init */
 
-if (document.readyState === "complete" || document.readyState === "interactive") {
-    initApp();
-} else {
-    document.addEventListener("DOMContentLoaded", initApp);
-}
-
 const initApp = () => {
     // Add listeners
     const itemEntryForm = document.getElementById("itemEntryForm");
@@ -224,3 +218,10 @@ const updateScreenReaderConfirmation = (newEntryText, actionVerb) => {
     const item = newEntryText.length > 15 ? "item" : newEntryText;
     document.getElementById("confirmation").textContent = `${item} ${actionVerb}.`;
 };
+
+/* App Startup */
+if (document.readyState === "complete" || document.readyState === "interactive") {
+    initApp();
+} else {
+    document.addEventListener("DOMContentLoaded", initApp);
+}
