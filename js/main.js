@@ -7,11 +7,11 @@ const toDoList = new ToDoList();
 
 /* App Init */
 
-document.addEventListener("readystatechange", (event) => {
-    if (event.target.readyState === "complete") {
-        initApp();
-    }
-});
+if (document.readyState === "complete" || document.readyState === "interactive") {
+    initApp();
+} else {
+    document.addEventListener("DOMContentLoaded", initApp);
+}
 
 const initApp = () => {
     // Add listeners
