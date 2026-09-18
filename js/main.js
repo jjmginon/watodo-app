@@ -113,6 +113,9 @@ const buildListItem = (item) => {
 
 const addClickListenerToCheckbox = (checkbox) => {
     checkbox.addEventListener("click", (event) => {
+        if (checkbox.disabled) return;
+        checkbox.disabled = true;
+
         const removedText = getLabelText(checkbox.id);
         const listItem = checkbox.closest(".list-item");
 
