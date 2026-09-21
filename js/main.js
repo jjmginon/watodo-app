@@ -5,6 +5,11 @@ import ToDoItem from "./ToDoItem.js";
 
 const toDoList = new ToDoList();
 
+/* Undo state */
+const UNDO_DURATION_MS = 10000;
+let pendingUndo = null;
+let undoTimeoutId = null;
+
 /* App Init */
 
 const initApp = () => {
@@ -21,6 +26,9 @@ const initApp = () => {
             openClearModal();
         }
     });
+
+    const undoButton = document.getElementById("undoButton");
+    undoButton.addEventListener("click", handleUndoClick);
 
     const modalCancel = document.getElementById("modalCancel");
     modalCancel.addEventListener("click", closeClearModal);
@@ -125,10 +133,11 @@ const addClickListenerToCheckbox = (checkbox) => {
         }
 
         setTimeout(() => {
-            toDoList.removeItemFromList(checkbox.id);
+            const removedData = toDoList.removeItemFromList(checkbox.id);
             updatePersistentData(toDoList.getList());
-            updateScreenReaderConfirmation(removedText, "removed from list");
+            updateScreenReaderConfirmation(removedText, "removed from list. Undo available.");
             refreshThePage();
+            showUndoToast(removedData, removedText);
         }, 400);
     });
 };
@@ -213,6 +222,42 @@ const closeClearModal = () => {
     page.removeAttribute("inert");
     page.removeAttribute("aria-hidden");
     document.getElementById("clearItems").focus();
+};
+
+/* Undo */
+
+const showUndoToast = (removedData, removedText) => {
+    if (!removedData) return;
+
+    // Finalize any previous pending undo before starting a new one
+    clearTimeout(undoTimeoutId);
+    pendingUndo = removedData;
+
+    const toast = document.getElementById("undoToast");
+    const toastMessage = document.getElementById("undoToastMessage");
+    toastMessage.textContent = `"${removedText}" removed.`;
+    toast.classList.add("is-visible");
+
+    undoTimeoutId = setTimeout(hideUndoToast, UNDO_DURATION_MS);
+};
+
+const hideUndoToast = () => {
+    const toast = document.getElementById("undoToast");
+    toast.classList.remove("is-visible");
+    pendingUndo = null;
+    undoTimeoutId = null;
+};
+
+const handleUndoClick = () => {
+    if (!pendingUndo) return;
+    clearTimeout(undoTimeoutId);
+
+    toDoList.insertItemAtIndex(pendingUndo.item, pendingUndo.index);
+    updatePersistentData(toDoList.getList());
+    refreshThePage();
+    updateScreenReaderConfirmation(pendingUndo.item.getItem(), "restored");
+
+    hideUndoToast();
 };
 
 /* Screen Reader Confirmation */

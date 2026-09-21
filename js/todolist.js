@@ -21,9 +21,14 @@ export default class ToDoList {
         const list = this._list;
         for (let i = 0; i < list.length; i++) {
             if (list[i]._id == id) {
-                list.splice(i, 1);
-                break;
+                const [removedItem] = list.splice(i, 1);
+                return { item: removedItem, index: i };
             }
         }
+        return null;
+    }
+
+    insertItemAtIndex(itemObj, index) {
+        this._list.splice(index, 0, itemObj);
     }
 }
