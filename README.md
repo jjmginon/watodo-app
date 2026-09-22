@@ -35,6 +35,7 @@ watodo-app/
 │   ├── _header.scss        # Wordmark & tagline
 │   ├── _entry-card.scss    # Input form styles
 │   ├── _list-card.scss     # To-do list display
+│   ├── _toast.scss         # Undo toast
 │   ├── _modal.scss         # Clear confirmation modal
 │   ├── _footer.scss        # Footer section
 │   └── style.scss          # Main SCSS entrypoint
@@ -61,7 +62,7 @@ watodo-app/
   Tasks are saved in `localStorage` and restored automatically between visits.
 
 - **Interactive UI**  
-  Animated item check‑off, clear‑all confirmation modal, and responsive input focus management.
+  Animated item check‑off, clear‑all confirmation modal, responsive input focus management, and an undo toast for accidental removals.
 
 - **Modern styling**  
   SCSS partials with design tokens, responsive spacing, transitions, and component‑based class naming.
